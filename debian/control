@@ -3,12 +3,12 @@ Section: devel
 Priority: optional
 Maintainer: Robert Edmonds <edmonds@debian.org>
 Build-Depends:
- debhelper (>= 10),
+ debhelper-compat (= 12),
  libprotobuf-dev (>= 2.6.0~),
  libprotoc-dev (>= 2.6.0~),
  pkg-config,
  protobuf-compiler (>= 2.6.0~),
-Standards-Version: 4.2.0
+Standards-Version: 4.5.0
 Homepage: https://github.com/protobuf-c/protobuf-c
 Vcs-Browser: https://salsa.debian.org/edmonds/protobuf-c
 Vcs-Git: https://salsa.debian.org/edmonds/protobuf-c.git
