@@ -1,3 +1,21 @@
+protobuf-c (1.3.3-1) unstable; urgency=medium
+
+  * New upstream version 1.3.3
+  * debian/control: Bump Standards-Version to 4.5.0 (no changes)
+  * debian/control: Bump debhelper compat level to 12
+  * debian/libprotobuf-c1.symbols: Add "* Build-Depends-Package:
+    libprotobuf-c-dev"
+
+ -- Robert Edmonds <edmonds@debian.org>  Thu, 13 Feb 2020 20:22:35 -0500
+
+protobuf-c (1.3.2-1) unstable; urgency=medium
+
+  * New upstream version 1.3.2
+  * debian/copyright: Add 2019 to copyright years
+  * debian/control: Bump Standards-Version to 4.4.0 (no changes)
+
+ -- Robert Edmonds <edmonds@debian.org>  Mon, 26 Aug 2019 00:10:37 -0400
+
 protobuf-c (1.3.1-1+b1pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment

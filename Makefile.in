@@ -92,9 +92,11 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = $(am__EXEEXT_1)
-check_PROGRAMS = $(am__EXEEXT_2) $(am__EXEEXT_3) $(am__EXEEXT_4)
-noinst_PROGRAMS = $(am__EXEEXT_5)
-TESTS = $(am__EXEEXT_2) $(am__EXEEXT_3) $(am__EXEEXT_4)
+check_PROGRAMS = $(am__EXEEXT_2) $(am__EXEEXT_3) $(am__EXEEXT_4) \
+	$(am__EXEEXT_5) $(am__EXEEXT_6)
+noinst_PROGRAMS = $(am__EXEEXT_7)
+TESTS = $(am__EXEEXT_2) $(am__EXEEXT_3) $(am__EXEEXT_4) \
+	$(am__EXEEXT_5) $(am__EXEEXT_6)
 @HAVE_LD_VERSION_SCRIPT_TRUE@am__append_1 = \
 @HAVE_LD_VERSION_SCRIPT_TRUE@    -Wl,--version-script=$(top_srcdir)/protobuf-c/libprotobuf-c.sym
 
@@ -148,7 +150,31 @@ TESTS = $(am__EXEEXT_2) $(am__EXEEXT_3) $(am__EXEEXT_4)
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.pb-c.c \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.pb-c.h
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__append_14 = t/issue220/issue220.proto \
-@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.proto
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.proto \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330.proto \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375.proto
+
+# Issue #330
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am__append_15 = \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330
+
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am__append_16 = \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330
+
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am__append_17 = \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330.pb-c.c t/issue330/issue330.pb-c.h
+
+
+# Issue #375
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__append_18 = \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375
+
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__append_19 = \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375
+
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__append_20 = \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375.pb-c.c t/issue375/issue375.pb-c.h
+
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_compile_flag.m4 \
@@ -179,7 +205,9 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libdir)" \
 @BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_3 = t/generated-code3/test-generated-code3$(EXEEXT)
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_4 = t/issue220/issue220$(EXEEXT) \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251$(EXEEXT)
-@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_5 = t/generated-code2/cxx-generate-packed-data$(EXEEXT)
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_5 = t/issue330/issue330$(EXEEXT)
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_6 = t/issue375/issue375$(EXEEXT)
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am__EXEEXT_7 = t/generated-code2/cxx-generate-packed-data$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
@@ -305,6 +333,18 @@ am__t_issue251_issue251_SOURCES_DIST = t/issue251/issue251.c \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.pb-c.$(OBJEXT)
 t_issue251_issue251_OBJECTS = $(am_t_issue251_issue251_OBJECTS)
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t_issue251_issue251_DEPENDENCIES = protobuf-c/libprotobuf-c.la
+am__t_issue330_issue330_SOURCES_DIST = t/issue330/issue330.c \
+	t/issue330/issue330.pb-c.c
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@am_t_issue330_issue330_OBJECTS = t/issue330/issue330.$(OBJEXT) \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330.pb-c.$(OBJEXT)
+t_issue330_issue330_OBJECTS = $(am_t_issue330_issue330_OBJECTS)
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@t_issue330_issue330_DEPENDENCIES = protobuf-c/libprotobuf-c.la
+am__t_issue375_issue375_SOURCES_DIST = t/issue375/issue375.c \
+	t/issue375/issue375.pb-c.c
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am_t_issue375_issue375_OBJECTS = t/issue375/issue375.$(OBJEXT) \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375.pb-c.$(OBJEXT)
+t_issue375_issue375_OBJECTS = $(am_t_issue375_issue375_OBJECTS)
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t_issue375_issue375_DEPENDENCIES = protobuf-c/libprotobuf-c.la
 am__t_version_version_SOURCES_DIST = t/version/version.c
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@am_t_version_version_OBJECTS = t/version/version.$(OBJEXT)
 t_version_version_OBJECTS = $(am_t_version_version_OBJECTS)
@@ -351,6 +391,10 @@ am__depfiles_remade = protobuf-c/$(DEPDIR)/protobuf-c.Plo \
 	t/issue220/$(DEPDIR)/issue220.pb-c.Po \
 	t/issue251/$(DEPDIR)/issue251.Po \
 	t/issue251/$(DEPDIR)/issue251.pb-c.Po \
+	t/issue330/$(DEPDIR)/issue330.Po \
+	t/issue330/$(DEPDIR)/issue330.pb-c.Po \
+	t/issue375/$(DEPDIR)/issue375.Po \
+	t/issue375/$(DEPDIR)/issue375.pb-c.Po \
 	t/version/$(DEPDIR)/version.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -396,6 +440,7 @@ SOURCES = $(protobuf_c_libprotobuf_c_la_SOURCES) \
 	$(t_generated_code2_test_generated_code2_SOURCES) \
 	$(t_generated_code3_test_generated_code3_SOURCES) \
 	$(t_issue220_issue220_SOURCES) $(t_issue251_issue251_SOURCES) \
+	$(t_issue330_issue330_SOURCES) $(t_issue375_issue375_SOURCES) \
 	$(t_version_version_SOURCES)
 DIST_SOURCES = $(protobuf_c_libprotobuf_c_la_SOURCES) \
 	$(am__protoc_c_protoc_gen_c_SOURCES_DIST) \
@@ -405,6 +450,8 @@ DIST_SOURCES = $(protobuf_c_libprotobuf_c_la_SOURCES) \
 	$(am__t_generated_code3_test_generated_code3_SOURCES_DIST) \
 	$(am__t_issue220_issue220_SOURCES_DIST) \
 	$(am__t_issue251_issue251_SOURCES_DIST) \
+	$(am__t_issue330_issue330_SOURCES_DIST) \
+	$(am__t_issue375_issue375_SOURCES_DIST) \
 	$(am__t_version_version_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -783,7 +830,8 @@ top_srcdir = @top_srcdir@
 lib_LTLIBRARIES = protobuf-c/libprotobuf-c.la
 nobase_include_HEADERS = protobuf-c/protobuf-c.h
 pkgconfig_DATA = protobuf-c/libprotobuf-c.pc
-BUILT_SOURCES = $(am__append_7) $(am__append_10) $(am__append_13)
+BUILT_SOURCES = $(am__append_7) $(am__append_10) $(am__append_13) \
+	$(am__append_17) $(am__append_20)
 
 #
 #
@@ -922,6 +970,20 @@ protobuf_c_libprotobuf_c_la_LDFLAGS = $(AM_LDFLAGS) -version-info \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue251/issue251.pb-c.c
 
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t_issue251_issue251_LDADD = \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	protobuf-c/libprotobuf-c.la
+
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@t_issue330_issue330_SOURCES = \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330.c \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	t/issue330/issue330.pb-c.c
+
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@t_issue330_issue330_LDADD = \
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	protobuf-c/libprotobuf-c.la
+
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t_issue375_issue375_SOURCES = \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375.c \
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	t/issue375/issue375.pb-c.c
+
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t_issue375_issue375_LDADD = \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	protobuf-c/libprotobuf-c.la
 
 all: $(BUILT_SOURCES) config.h
@@ -1218,6 +1280,34 @@ t/issue251/issue251.pb-c.$(OBJEXT): t/issue251/$(am__dirstamp) \
 t/issue251/issue251$(EXEEXT): $(t_issue251_issue251_OBJECTS) $(t_issue251_issue251_DEPENDENCIES) $(EXTRA_t_issue251_issue251_DEPENDENCIES) t/issue251/$(am__dirstamp)
 	@rm -f t/issue251/issue251$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(t_issue251_issue251_OBJECTS) $(t_issue251_issue251_LDADD) $(LIBS)
+t/issue330/$(am__dirstamp):
+	@$(MKDIR_P) t/issue330
+	@: > t/issue330/$(am__dirstamp)
+t/issue330/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) t/issue330/$(DEPDIR)
+	@: > t/issue330/$(DEPDIR)/$(am__dirstamp)
+t/issue330/issue330.$(OBJEXT): t/issue330/$(am__dirstamp) \
+	t/issue330/$(DEPDIR)/$(am__dirstamp)
+t/issue330/issue330.pb-c.$(OBJEXT): t/issue330/$(am__dirstamp) \
+	t/issue330/$(DEPDIR)/$(am__dirstamp)
+
+t/issue330/issue330$(EXEEXT): $(t_issue330_issue330_OBJECTS) $(t_issue330_issue330_DEPENDENCIES) $(EXTRA_t_issue330_issue330_DEPENDENCIES) t/issue330/$(am__dirstamp)
+	@rm -f t/issue330/issue330$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(t_issue330_issue330_OBJECTS) $(t_issue330_issue330_LDADD) $(LIBS)
+t/issue375/$(am__dirstamp):
+	@$(MKDIR_P) t/issue375
+	@: > t/issue375/$(am__dirstamp)
+t/issue375/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) t/issue375/$(DEPDIR)
+	@: > t/issue375/$(DEPDIR)/$(am__dirstamp)
+t/issue375/issue375.$(OBJEXT): t/issue375/$(am__dirstamp) \
+	t/issue375/$(DEPDIR)/$(am__dirstamp)
+t/issue375/issue375.pb-c.$(OBJEXT): t/issue375/$(am__dirstamp) \
+	t/issue375/$(DEPDIR)/$(am__dirstamp)
+
+t/issue375/issue375$(EXEEXT): $(t_issue375_issue375_OBJECTS) $(t_issue375_issue375_DEPENDENCIES) $(EXTRA_t_issue375_issue375_DEPENDENCIES) t/issue375/$(am__dirstamp)
+	@rm -f t/issue375/issue375$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(t_issue375_issue375_OBJECTS) $(t_issue375_issue375_LDADD) $(LIBS)
 t/version/$(am__dirstamp):
 	@$(MKDIR_P) t/version
 	@: > t/version/$(am__dirstamp)
@@ -1241,6 +1331,8 @@ mostlyclean-compile:
 	-rm -f t/generated-code2/*.$(OBJEXT)
 	-rm -f t/issue220/*.$(OBJEXT)
 	-rm -f t/issue251/*.$(OBJEXT)
+	-rm -f t/issue330/*.$(OBJEXT)
+	-rm -f t/issue375/*.$(OBJEXT)
 	-rm -f t/version/*.$(OBJEXT)
 
 distclean-compile:
@@ -1274,6 +1366,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@t/issue220/$(DEPDIR)/issue220.pb-c.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@t/issue251/$(DEPDIR)/issue251.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@t/issue251/$(DEPDIR)/issue251.pb-c.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@t/issue330/$(DEPDIR)/issue330.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@t/issue330/$(DEPDIR)/issue330.pb-c.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@t/issue375/$(DEPDIR)/issue375.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@t/issue375/$(DEPDIR)/issue375.pb-c.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@t/version/$(DEPDIR)/version.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -1594,6 +1690,8 @@ clean-libtool:
 	-rm -rf t/generated-code3/.libs t/generated-code3/_libs
 	-rm -rf t/issue220/.libs t/issue220/_libs
 	-rm -rf t/issue251/.libs t/issue251/_libs
+	-rm -rf t/issue330/.libs t/issue330/_libs
+	-rm -rf t/issue375/.libs t/issue375/_libs
 	-rm -rf t/version/.libs t/version/_libs
 
 distclean-libtool:
@@ -1886,6 +1984,20 @@ t/issue251/issue251.log: t/issue251/issue251$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+t/issue330/issue330.log: t/issue330/issue330$(EXEEXT)
+	@p='t/issue330/issue330$(EXEEXT)'; \
+	b='t/issue330/issue330'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+t/issue375/issue375.log: t/issue375/issue375$(EXEEXT)
+	@p='t/issue375/issue375$(EXEEXT)'; \
+	b='t/issue375/issue375'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 .test.log:
 	@p='$<'; \
 	$(am__set_b); \
@@ -2129,6 +2241,10 @@ distclean-generic:
 	-rm -f t/issue220/$(am__dirstamp)
 	-rm -f t/issue251/$(DEPDIR)/$(am__dirstamp)
 	-rm -f t/issue251/$(am__dirstamp)
+	-rm -f t/issue330/$(DEPDIR)/$(am__dirstamp)
+	-rm -f t/issue330/$(am__dirstamp)
+	-rm -f t/issue375/$(DEPDIR)/$(am__dirstamp)
+	-rm -f t/issue375/$(am__dirstamp)
 	-rm -f t/version/$(DEPDIR)/$(am__dirstamp)
 	-rm -f t/version/$(am__dirstamp)
 	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
@@ -2137,8 +2253,8 @@ maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-@HAVE_DOXYGEN_FALSE@html-local:
 @HAVE_DOXYGEN_FALSE@clean-local:
+@HAVE_DOXYGEN_FALSE@html-local:
 @BUILD_COMPILER_FALSE@install-exec-hook:
 clean: clean-am
 
@@ -2176,6 +2292,10 @@ distclean: distclean-am
 	-rm -f t/issue220/$(DEPDIR)/issue220.pb-c.Po
 	-rm -f t/issue251/$(DEPDIR)/issue251.Po
 	-rm -f t/issue251/$(DEPDIR)/issue251.pb-c.Po
+	-rm -f t/issue330/$(DEPDIR)/issue330.Po
+	-rm -f t/issue330/$(DEPDIR)/issue330.pb-c.Po
+	-rm -f t/issue375/$(DEPDIR)/issue375.Po
+	-rm -f t/issue375/$(DEPDIR)/issue375.pb-c.Po
 	-rm -f t/version/$(DEPDIR)/version.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -2254,6 +2374,10 @@ maintainer-clean: maintainer-clean-am
 	-rm -f t/issue220/$(DEPDIR)/issue220.pb-c.Po
 	-rm -f t/issue251/$(DEPDIR)/issue251.Po
 	-rm -f t/issue251/$(DEPDIR)/issue251.pb-c.Po
+	-rm -f t/issue330/$(DEPDIR)/issue330.Po
+	-rm -f t/issue330/$(DEPDIR)/issue330.pb-c.Po
+	-rm -f t/issue375/$(DEPDIR)/issue375.Po
+	-rm -f t/issue375/$(DEPDIR)/issue375.pb-c.Po
 	-rm -f t/version/$(DEPDIR)/version.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
@@ -2335,6 +2459,10 @@ uninstall-am: uninstall-binPROGRAMS uninstall-libLTLIBRARIES \
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue220/issue220.proto
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t/issue251/issue251.pb-c.c t/issue251/issue251.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue251/issue251.proto
 @BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue251/issue251.proto
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@t/issue330/issue330.pb-c.c t/issue330/issue330.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue330/issue330.proto
+@BUILD_COMPILER_TRUE@@BUILD_PROTO3_TRUE@@CROSS_COMPILING_FALSE@	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue330/issue330.proto
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@t/issue375/issue375.pb-c.c t/issue375/issue375.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue375/issue375.proto
+@BUILD_COMPILER_TRUE@@CROSS_COMPILING_FALSE@	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue375/issue375.proto
 
 dist-hook:
 	rm -f `find $(distdir) -name '*.pb-c.[ch]' -o -name '*.pb.cc' -o -name '*.pb.h'`
