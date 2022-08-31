@@ -13,7 +13,7 @@ Standards-Version: 4.5.0
 Homepage: https://github.com/protobuf-c/protobuf-c
 Vcs-Browser: https://salsa.debian.org/edmonds/protobuf-c
 Vcs-Git: https://salsa.debian.org/edmonds/protobuf-c.git
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: libprotobuf-c-dev
 Architecture: any
