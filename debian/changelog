@@ -1,3 +1,9 @@
+protobuf-c (1.4.1-1pexip2) pexip-bullseye; urgency=medium
+
+  * Bullseye rebuild for ARM64 inclusion
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 05 Sep 2022 10:35:04 +0100
+
 protobuf-c (1.4.1-1pexip1) pexip-bullseye; urgency=medium
 
   * New upstream release (from bookworm)
