@@ -74,6 +74,7 @@
 #include "c_message_field.h"
 #include "c_primitive_field.h"
 #include "c_string_field.h"
+#include "compat.h"
 
 namespace protobuf_c {
 
@@ -115,9 +116,9 @@ void FieldGenerator::GenerateDescriptorInitializerGeneric(google::protobuf::io::
   variables["classname"] = FullNameToC(FieldScope(descriptor_)->full_name(), FieldScope(descriptor_)->file());
   variables["name"] = FieldName(descriptor_);
   if (opt.use_oneof_field_name())
-    variables["proto_name"] = oneof->name();
+    variables["proto_name"] = std::string(oneof->name());
   else
-    variables["proto_name"] = descriptor_->name();
+    variables["proto_name"] = std::string(descriptor_->name());
   variables["descriptor_addr"] = descriptor_addr;
   variables["value"] = SimpleItoa(descriptor_->number());
   if (oneof != NULL)
