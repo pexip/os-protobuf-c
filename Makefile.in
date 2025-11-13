@@ -279,8 +279,9 @@ am__protoc_gen_c_protoc_gen_c_SOURCES_DIST =  \
 	protoc-gen-c/c_primitive_field.cc \
 	protoc-gen-c/c_primitive_field.h protoc-gen-c/c_service.cc \
 	protoc-gen-c/c_service.h protoc-gen-c/c_string_field.cc \
-	protoc-gen-c/c_string_field.h protobuf-c/protobuf-c.pb.cc \
-	protobuf-c/protobuf-c.pb.h protoc-gen-c/main.cc
+	protoc-gen-c/c_string_field.h protoc-gen-c/compat.h \
+	protobuf-c/protobuf-c.pb.cc protobuf-c/protobuf-c.pb.h \
+	protoc-gen-c/main.cc
 @BUILD_COMPILER_TRUE@am_protoc_gen_c_protoc_gen_c_OBJECTS = protoc-gen-c/protoc_gen_c-c_bytes_field.$(OBJEXT) \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/protoc_gen_c-c_enum.$(OBJEXT) \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/protoc_gen_c-c_enum_field.$(OBJEXT) \
@@ -965,6 +966,7 @@ protobuf_c_libprotobuf_c_la_LDFLAGS = $(AM_LDFLAGS) -version-info \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/c_service.h \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/c_string_field.cc \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/c_string_field.h \
+@BUILD_COMPILER_TRUE@	protoc-gen-c/compat.h \
 @BUILD_COMPILER_TRUE@	protobuf-c/protobuf-c.pb.cc \
 @BUILD_COMPILER_TRUE@	protobuf-c/protobuf-c.pb.h \
 @BUILD_COMPILER_TRUE@	protoc-gen-c/main.cc
