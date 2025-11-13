@@ -81,7 +81,7 @@ EnumGenerator::~EnumGenerator() {}
 void EnumGenerator::GenerateDefinition(google::protobuf::io::Printer* printer) {
   std::map<std::string, std::string> vars;
   vars["classname"] = FullNameToC(descriptor_->full_name(), descriptor_->file());
-  vars["shortname"] = descriptor_->name();
+  vars["shortname"] = std::string(descriptor_->name());
   vars["uc_name"] = FullNameToUpper(descriptor_->full_name(), descriptor_->file());
 
   google::protobuf::SourceLocation sourceLoc;
@@ -98,7 +98,7 @@ void EnumGenerator::GenerateDefinition(google::protobuf::io::Printer* printer) {
   vars["opt_comma"] = ",";
   vars["prefix"] = FullNameToUpper(descriptor_->full_name(), descriptor_->file()) + "__";
   for (int i = 0; i < descriptor_->value_count(); i++) {
-    vars["name"] = descriptor_->value(i)->name();
+    vars["name"] = std::string(descriptor_->value(i)->name());
     vars["number"] = SimpleItoa(descriptor_->value(i)->number());
     if (i + 1 == descriptor_->value_count())
       vars["opt_comma"] = "";
@@ -142,7 +142,7 @@ struct ValueIndex
   int value;
   unsigned index;
   unsigned final_index;		/* index in uniqified array of values */
-  const char *name;
+  compat::StringView name;
 };
 void EnumGenerator::GenerateValueInitializer(google::protobuf::io::Printer *printer, int index)
 {
@@ -151,8 +151,8 @@ void EnumGenerator::GenerateValueInitializer(google::protobuf::io::Printer *prin
   bool optimize_code_size = descriptor_->file()->options().has_optimize_for() &&
     descriptor_->file()->options().optimize_for() ==
     google::protobuf::FileOptions_OptimizeMode_CODE_SIZE;
-  vars["enum_value_name"] = vd->name();
-  vars["c_enum_value_name"] = FullNameToUpper(descriptor_->full_name(), descriptor_->file()) + "__" + vd->name();
+  vars["enum_value_name"] = std::string(vd->name());
+  vars["c_enum_value_name"] = FullNameToUpper(descriptor_->full_name(), descriptor_->file()) + "__" + std::string(vd->name());
   vars["value"] = SimpleItoa(vd->number());
   if (optimize_code_size)
     printer->Print(vars, "  { NULL, NULL, $value$ }, /* CODE_SIZE */\n");
@@ -176,16 +176,16 @@ static int compare_value_indices_by_name(const void *a, const void *b)
 {
   const ValueIndex *vi_a = (const ValueIndex *) a;
   const ValueIndex *vi_b = (const ValueIndex *) b;
-  return strcmp (vi_a->name, vi_b->name);
+  return vi_a->name.compare(vi_b->name);
 }
 
 void EnumGenerator::GenerateEnumDescriptor(google::protobuf::io::Printer* printer) {
   std::map<std::string, std::string> vars;
-  vars["fullname"] = descriptor_->full_name();
+  vars["fullname"] = std::string(descriptor_->full_name());
   vars["lcclassname"] = FullNameToLower(descriptor_->full_name(), descriptor_->file());
   vars["cname"] = FullNameToC(descriptor_->full_name(), descriptor_->file());
-  vars["shortname"] = descriptor_->name();
-  vars["packagename"] = descriptor_->file()->package();
+  vars["shortname"] = std::string(descriptor_->name());
+  vars["packagename"] = std::string(descriptor_->file()->package());
   vars["value_count"] = SimpleItoa(descriptor_->value_count());
 
   bool optimize_code_size = descriptor_->file()->options().has_optimize_for() &&
@@ -194,18 +194,15 @@ void EnumGenerator::GenerateEnumDescriptor(google::protobuf::io::Printer* printe
 
   // Sort by name and value, dropping duplicate values if they appear later.
   // TODO: use a c++ paradigm for this!
-  NameIndex *name_index = new NameIndex[descriptor_->value_count()];
-  ValueIndex *value_index = new ValueIndex[descriptor_->value_count()];
+  std::vector<ValueIndex> value_index;
   for (int j = 0; j < descriptor_->value_count(); j++) {
     const google::protobuf::EnumValueDescriptor *vd = descriptor_->value(j);
-    name_index[j].index = j;
-    name_index[j].name = vd->name().c_str();
-    value_index[j].index = j;
-    value_index[j].value = vd->number();
-    value_index[j].name = vd->name().c_str();
+    value_index.push_back({ vd->number(), (unsigned)j, 0, vd->name() });
   }
-  qsort(value_index, descriptor_->value_count(),
-	sizeof(ValueIndex), compare_value_indices_by_value_then_index);
+  qsort(&value_index[0],
+        value_index.size(),
+        sizeof(ValueIndex),
+        compare_value_indices_by_value_then_index);
 
   // only record unique values
   int n_unique_values;
@@ -275,14 +272,16 @@ void EnumGenerator::GenerateEnumDescriptor(google::protobuf::io::Printer* printe
   vars["n_ranges"] = SimpleItoa(n_ranges);
 
   if (!optimize_code_size) {
-    qsort(value_index, descriptor_->value_count(),
-        sizeof(ValueIndex), compare_value_indices_by_name);
+    qsort(&value_index[0],
+          value_index.size(),
+          sizeof(ValueIndex),
+          compare_value_indices_by_name);
     printer->Print(vars,
         "static const ProtobufCEnumValueIndex $lcclassname$__enum_values_by_name[$value_count$] =\n"
         "{\n");
     for (int j = 0; j < descriptor_->value_count(); j++) {
       vars["index"] = SimpleItoa(value_index[j].final_index);
-      vars["name"] = value_index[j].name;
+      vars["name"] = std::string(value_index[j].name);
       printer->Print (vars, "  { \"$name$\", $index$ },\n");
     }
     printer->Print(vars, "};\n");
@@ -319,9 +318,6 @@ void EnumGenerator::GenerateEnumDescriptor(google::protobuf::io::Printer* printe
         "  NULL,NULL,NULL,NULL   /* reserved[1234] */\n"
         "};\n");
   }
-
-  delete[] value_index;
-  delete[] name_index;
 }
 
 }  // namespace protobuf_c
