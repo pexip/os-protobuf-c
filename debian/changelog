@@ -1,3 +1,9 @@
+protobuf-c (1.5.2-1+pexip25u1) pexip-trixie; urgency=medium
+
+  * New upstream release for compatibilty with newer protobuf.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 13 Nov 2025 11:19:29 +0000
+
 protobuf-c (1.5.1-1+pexip25u1) pexip-trixie; urgency=medium
 
   * Initial trixie build
