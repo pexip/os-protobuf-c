@@ -7,6 +7,7 @@ Build-Depends:
  debhelper-compat (= 13),
  libprotobuf-dev,
  libprotoc-dev,
+ libutf8-range-dev,
  pkgconf,
  protobuf-compiler,
 Standards-Version: 4.7.0
